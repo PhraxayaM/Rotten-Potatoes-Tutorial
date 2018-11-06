@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 app.listen(port);
-var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 // mongoose.connect('mongodb://localhost/rotten-potatoes');
 // override with POST having ?_method=DELETE or ?_method=PUT
