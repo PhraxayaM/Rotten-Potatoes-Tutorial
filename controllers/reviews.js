@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 
 module.exports = function(app, Reviews) {
     app.use(methodOverride('_method'))
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     app.get('/', (req, res) => {
         Review.find()
