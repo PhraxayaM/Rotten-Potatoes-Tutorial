@@ -1,6 +1,11 @@
 const Review = require('../models/review');
+const Comment = require('../models/comment');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
+
 
 module.exports = function(app, Reviews) {
+    app.use(methodOverride('_method'))
 
     app.get('/', (req, res) => {
         Review.find()

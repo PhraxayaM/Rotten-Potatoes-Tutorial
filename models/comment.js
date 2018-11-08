@@ -8,4 +8,4 @@ const Comment = mongoose.model('Comment', {
 
 });
 
-module.exports = Comment
+module.exports = Comment;
