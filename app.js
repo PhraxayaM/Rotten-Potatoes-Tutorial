@@ -14,7 +14,7 @@ module.exports = app;
 
 //review.js
 const Comment = require('./models/comment')
-const Review = require('.models/review')
+const Review = require('./models/review')
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
