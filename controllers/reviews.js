@@ -15,14 +15,20 @@ module.exports = function(app, Reviews) {
     app.get('/reviews/new', (req, res) => {
       res.render('reviews-new', {});
     })
-
+    //show
     app.get('/reviews/:id', (req, res) => {
+        //find review
       Review.findById(req.params.id).then((review) => {
-        res.render('reviews-show', { review: review })
-      }).catch((err) => {
-        console.log(err.message);
+          //fetch its comments
+          Comment.find({ reviewId: req.params.id }).then(comments => {
+              //respond with the template with both values
+        res.render('reviews-show', { review: review, comments: comments  })
       })
-    })
+  }).catch((err) => {
+      //catch error
+        console.log(err.message);
+    });
+  });
     // EDIT
     app.get('/reviews/:id/edit', (req, res) => {
       Review.findById(req.params.id, function(err, review) {
@@ -47,25 +53,23 @@ module.exports = function(app, Reviews) {
         console.log(err.message);
       })
     })
-
-    // CREATE
-    // app.post('/reviews', (req, res) => {
-    //   Review.create(req.body).then((review) => {
-    //     console.log(review);
-    //     res.redirect('/');
-    //   }).catch((err) => {
-    //     console.log(err.message);
-    //   })
-    // })
-    // CREATE
-    app.post('/reviews', (req, res) => {
-      Review.create(req.body).then((review) => {
-        console.log(review)
-        res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+    app.post('/reviews/comments', (req, res) => {
+      Comment.create(req.body).then(comment => {
+        console.log(comment)
+        res.redirect(`/reviews/${comment.reviewId}`) // Redirect to reviews/:id
       }).catch((err) => {
         console.log(err.message)
       })
     })
+    // CREATE
+    // app.post('/reviews', (req, res) => {
+    //   Review.create(req.body).then((review) => {
+    //     console.log(review)
+    //     res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+    //   }).catch((err) => {
+    //     console.log(err.message)
+    //   })
+    // })
     // CREATE
     app.post('/reviews', (req, res) => {
       console.log(req.body);

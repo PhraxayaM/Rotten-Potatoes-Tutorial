@@ -12,6 +12,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes
 app.use(methodOverride('_method'))
 module.exports = app;
 
+//review.js
+const Comment = require('./models/comment')
+const Review = require('.models/review')
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));

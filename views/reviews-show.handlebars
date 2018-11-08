@@ -14,6 +14,8 @@
 <hr>
 
 <!-- Comment form -->
-{{> comment-form}}
+{{#each comments}}
+    {{> comment}}
+{{/each}}
     </div>
 </div>
