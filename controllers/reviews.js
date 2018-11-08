@@ -68,18 +68,18 @@ module.exports = function(app, Reviews) {
         console.log(err.message)
       })
     })
+    //CREATE
+    app.post('/reviews', (req, res) => {
+      Review.create(req.body).then((review) => {
+        console.log(review)
+        res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+      }).catch((err) => {
+        console.log(err.message)
+      })
+    })
     // CREATE
     // app.post('/reviews', (req, res) => {
-    //   Review.create(req.body).then((review) => {
-    //     console.log(review)
-    //     res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
-    //   }).catch((err) => {
-    //     console.log(err.message)
-    //   })
+    //   console.log(req.body);
+    //   res.render('reviews-new', {});
     // })
-    // CREATE
-    app.post('/reviews', (req, res) => {
-      console.log(req.body);
-      res.render('reviews-new', {});
-    })
 }
