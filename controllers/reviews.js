@@ -15,6 +15,7 @@ module.exports = function(app, Reviews) {
     app.get('/reviews/new', (req, res) => {
       res.render('reviews-new', {});
     })
+
     //show
     app.get('/reviews/:id', (req, res) => {
         //find review
