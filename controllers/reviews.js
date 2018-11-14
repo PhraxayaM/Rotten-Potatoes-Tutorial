@@ -27,7 +27,7 @@ module.exports = function(app, Reviews) {
         //find review
       Review.findById(req.params.id).then((review) => {
           //fetch its comments
-          Comment.find({ reviewId: req.params.id }).then(comments => {
+          Comment.find({ reviewID: req.params.id }).then(comments => {
               //respond with the template with both values
         res.render('reviews-show', { review: review, comments: comments  })
       })
@@ -60,14 +60,14 @@ module.exports = function(app, Reviews) {
         console.log(err.message);
       })
     })
-    app.post('/reviews/comments', (req, res) => {
-      Comment.create(req.body).then(comment => {
-        console.log(comment)
-        res.redirect(`/reviews/${comment.reviewId}`) // Redirect to reviews/:id
-      }).catch((err) => {
-        console.log(err.message)
-      })
-    })
+    // app.post('/reviews/comments', (req, res) => {
+    //   Comment.create(req.body).then(comment => {
+    //     console.log(comment)
+    //     res.redirect(`/reviews/${comment.reviewId}`) // Redirect to reviews/:id
+    //   }).catch((err) => {
+    //     console.log(err.message)
+    //   })
+    // })
     //CREATE
     app.post('/reviews', (req, res) => {
       Review.create(req.body).then((review) => {

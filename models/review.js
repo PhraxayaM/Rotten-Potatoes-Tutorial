@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const Review = mongoose.model('Review', {
-  title: String,
-  description: String,
-  movieTitle: String
-});
+    title: String,
+    description: String,
+    movietitle: String
+})
 
-module.exports = Review;
+module.exports = Review
