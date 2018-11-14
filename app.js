@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const Comment = require('./models/comment')
 const Review = require('./models/review')
 const reviews = require('./controllers/reviews')(app);
@@ -21,7 +21,7 @@ module.exports = app;
 
 
 
-
-app.listen(4000, () => {
-  console.log('App listening on port 4000!')
-})
+// 
+// app.listen(4000, () => {
+//   console.log('App listening on port 4000!')
+// })
